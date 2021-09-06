@@ -1,4 +1,4 @@
-# Fampay-yt Backend Assignment |
+# Fampay-yt |Backend Assignment|
 
 API to fetch the latest videos sorted in reverse chronological order of their publishing date-time from YouTube for a given tag/search query in a paginated response.
 
