@@ -1,5 +1,6 @@
+from . import views
 
-"""fam_django URL Configuration
+"""search URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -17,9 +18,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-# include chops off after search/ 
-# / by default will redirect both with/without / routes
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('search.urls')),
+    path('', views.home, name='youtube-home'),
 ]
