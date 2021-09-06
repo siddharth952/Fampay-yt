@@ -6,7 +6,8 @@ videos = [
     {
         'title': 'Unboxing the new Ps5',
         'author': 'UnboxingTherpy',
-        'date_uploaded': '03-2-19'
+        'date_uploaded': '03-2-19',
+        'url': 'https://youtu.be/embed/5pUKnoGcPWQ'
     },
     {
         'title': 'Unboxing the new Xbox',
