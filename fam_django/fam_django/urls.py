@@ -21,5 +21,5 @@ from django.urls import path, include
 # / by default will redirect both with/without / routes
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('search.urls')),
+    path('', include('home.urls')),
 ]
