@@ -7,8 +7,6 @@ API to fetch the latest videos sorted in reverse chronological order of their pu
 
 **Requirements**
 
-Package    Version
----------- -------
 asgiref    3.4.1
 Django     3.2.7
 pip        21.2.4
