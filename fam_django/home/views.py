@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from session import res
 
 # Test
 videos = [
@@ -30,6 +30,9 @@ videos = [
 
 
 def home(request):
+    
+    ses = res
+    
     # Let us access in the template, info of each video
     context = {
         'videos': videos
