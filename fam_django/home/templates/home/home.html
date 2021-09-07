@@ -4,7 +4,7 @@
 {% block content %}
 
 
-  <div class="alert alert-info" role="alert">
+  <div class="alert my-4 alert-info" role="alert">
     Search for your favorate youtube video!
   </div>
 
@@ -15,14 +15,15 @@
 
 
 <div class="d-flex flex-column">
-{% for video in videos %}
+{% for video in videos.items %}
 
-<div class="card text-center">
-    <h5 class="card-header">{{video.title}}</h5>
+<div class="card text-center my-2">
+    <h5 class="card-header">{{video.snippet.title}}</h5>
     <div class="card-body text-left">
-        <img class="img-thumbnail" src="https://th.bing.com/th/id/OIP.J5pTVqNkfOwq8F66t_aRxQAAAA?pid=ImgDet&rs=1" alt="Card image cap">
+        <img class="img-thumbnail" src="{{video.snippet.thumbnails.medium.url}}" alt="Card image cap">
         
-        <p>Uploaded by {{ video.author }} on {{ video.date_uploaded }}</p>
+        <p>{{video.snippet.description}}</p>
+        <p>Uploaded by {{ video.channelTitle }} on {{ video.snippet.publishTime }}</p>
 
         <!-- Button -->
         <div class="btn-group">

@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from session import res
-
+from .yt_session import getChannelStatus, getListVideos
 # Test
 videos = [
     {
@@ -31,10 +30,10 @@ videos = [
 
 def home(request):
     
-    ses = res
+    res = getListVideos('ps5')
     
     # Let us access in the template, info of each video
     context = {
-        'videos': videos
+        'videos': res
     }
     return render(request, 'home/home.html', context)
