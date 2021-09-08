@@ -3,16 +3,19 @@
 
 {% block content %}
 
-
   <div class="alert my-4 alert-info" role="alert">
     Search for your favorate youtube video!
   </div>
 
-  <input type="text" class="form-control" required="" name="uss" value="{{ instance.name }}" id="uss">
+
+  <form class="d-flex" action="" method="POST" id="systemForm">
+    {% csrf_token %}
+    <input type="text" class="form-control" required="" name="searched" value="{{ instance.name }}" id="uss">
+    <button type="submit" name="user_field" value="user_search" form="systemForm" class="btn btn-warning" >Search</button>
+  </form>
+  
 
   
-  
-
 
 <div class="d-flex flex-column">
 {% for video in videos.items %}
@@ -27,7 +30,7 @@
 
         <!-- Button -->
         <div class="btn-group">
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/lQAUq_zs-XU">Launch Video</button>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/{{video.id.videoId}}">Launch Video</button>
         </div>
         
         <!-- Modal -->
