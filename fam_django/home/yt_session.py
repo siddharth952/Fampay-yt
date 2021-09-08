@@ -15,6 +15,11 @@ yt_service = build('youtube', 'v3', developerKey=API_KEY)
 
 
 
+'''
+Returns search results that match the query parameters.
+By default, result set identifies matching video, channel, 
+and playlist resources, configure queries to only retrieve a specific type of resource.
+'''
 def getListVideos(keyword:str):
     # Call the API
     req = yt_service.search().list(

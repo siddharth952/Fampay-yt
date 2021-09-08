@@ -10,61 +10,63 @@
 
   <form class="d-flex" action="" method="POST" id="systemForm">
     {% csrf_token %}
-    <input type="text" class="form-control" required="" name="searched" value="{{ instance.name }}" id="uss">
+    <input type="text" class="form-control mx-2" required="" name="searched" value="{{ instance.name }}" id="uss">
     <button type="submit" name="user_field" value="user_search" form="systemForm" class="btn btn-warning" >Search</button>
   </form>
   
 
   
+{% if searched %}
 
-<div class="d-flex flex-column">
-{% for video in videos.items %}
+  <div class="d-flex flex-column">
+  {% for video in videos.items %}
 
-<div class="card text-center my-2">
-    <h5 class="card-header">{{video.snippet.title}}</h5>
-    <div class="card-body text-left">
-        <img class="img-thumbnail" src="{{video.snippet.thumbnails.medium.url}}" alt="Card image cap">
-        
-        <p>{{video.snippet.description}}</p>
-        <p>Uploaded by {{ video.channelTitle }} on {{ video.snippet.publishTime }}</p>
+  <div class="card text-center my-2">
+      <h5 class="card-header">{{video.snippet.title}}</h5>
+      <div class="card-body text-left">
+          <img class="img-thumbnail" src="{{video.snippet.thumbnails.medium.url}}" alt="Card image cap">
+          
+          <p>{{video.snippet.description}}</p>
+          <p>Uploaded by {{ video.channelTitle }} on {{ video.snippet.publishTime }}</p>
 
-        <!-- Button -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/{{video.id.videoId}}">Launch Video</button>
-        </div>
-        
-        <!-- Modal -->
-        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-dark border-dark">
-                        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body bg-dark p-0">
-                        <div class="embed-responsive embed-responsive-16by9">
-                          <iframe class="embed-responsive-item" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+          <!-- Button -->
+          <div class="btn-group">
+              <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/{{video.id.videoId}}">Launch Video</button>
+          </div>
+          
+          <!-- Modal -->
+          <div class="modal fade" id="videoModal" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header bg-dark border-dark">
+                          <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body bg-dark p-0">
+                          <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" allowfullscreen></iframe>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+    </div>
   </div>
-</div>
-{% endfor %}
+  {% endfor %}
 
-</div>
+  </div>
 
-<nav aria-label="...">
-    <ul class="pagination pagination-sm">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">1</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-    </ul>
-  </nav>
+  <nav aria-label="...">
+      <ul class="pagination pagination-sm">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">1</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+      </ul>
+    </nav>
 
+{% endif %}
 
 {% endblock content %}
 

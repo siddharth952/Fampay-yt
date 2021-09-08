@@ -14,7 +14,8 @@ def home(request):
         #context['user_search'] = user_search_data
         res = getListVideos(user_search_data)
         context = {
-        'videos': res
+        'videos': res,
+        'searched': user_search_data,
         }
         return render(request, 'home/home.html', context)
     else:
