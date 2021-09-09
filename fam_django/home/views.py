@@ -9,16 +9,31 @@ from django.core.paginator import Paginator
 def home(request):
     context = {}
     if request.method == "POST":
+        
+        # Clear the database
+        delete_videos_database()
+        
+        
         #Search field
         user_search_data = request.POST['searched']
         
         # Let us access in the template, info of each video
         data = getListVideos(user_search_data)
         
+        # Sorting
+        sortby = ''
+        if request.GET.get('sortby'):
+            sortby = request.GET.get('sortby')
+            
+        res = data['items']
+        # Add to database
+        add_to_database(res)
         
         
-        # paginator_ = Paginator
-        # page = request.GET.get('page')
+        # Database Paginator
+        paginator_ = Paginator(sort_filter_videos(sort_by=sortby), 8)
+        page = request.GET.get('page')
+        video_build_list = paginator_.get_page(page)
         
         
         # For Pagination YoutubeAPI
@@ -26,24 +41,34 @@ def home(request):
         # if page == '2':
         #     prev_page_token = data['prevPageToken']
         #     data = getListVideos(user_search_data, page_token=next_page_token)
-        sortby = ''
-        if request.GET.get('sortby'):
-            sortby = request.GET.get('sortby')
-            
-        res = data['items']
         
-        # Clear the database
-        delete_videos_database()
-        # Add to database
-        add_to_database(res)
+        
+        
         
         context = {
-        'videos': sort_filter_videos(sort_by=sortby),
+        'videos': video_build_list,
+        'video_build_list': video_build_list,
         'searched': user_search_data,
         }
         
         return render(request, 'home/home.html', context)
     else:
     
-    #refresh = asyncio.create_task()
-        return render(request, 'home/home.html', {})
+        # Sorting
+        sortby = ''
+        if request.GET.get('sortby'):
+            sortby = request.GET.get('sortby')
+            
+        # Database Paginator
+        paginator_ = Paginator(sort_filter_videos(sort_by=sortby), 10)
+        page = request.GET.get('page')
+        video_build_list = paginator_.get_page(page)
+    
+        
+        
+        context = {
+        'videos': video_build_list,
+        'video_build_list': video_build_list,
+        }
+        
+        return render(request, 'home/home.html', context)

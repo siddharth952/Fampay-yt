@@ -25,7 +25,7 @@
   
 
   
-{% if searched %}
+
   <div class="d-flex flex-column">
   <!--Videos-->
   {% for video in videos %}
@@ -66,18 +66,16 @@
 
   <nav aria-label="...">
     <ul class="pagination pagination-sm">
-      <li class="page-item disabled">
-        <a class="page-link" href="?page=1" tabindex="-1">1</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-      <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+      {% for num in videos.paginator.page_range %}
+        <li class="page-item"><a class="page-link" href="?page={{num}}">{{num}}</a></li>
+      {% endfor %}
     </ul>
   </nav>
 
 
 
 
-{% endif %}
+
 {% endblock content %}
 
 
