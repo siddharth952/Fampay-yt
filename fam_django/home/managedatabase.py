@@ -16,7 +16,16 @@ def add_to_database(res):
         print("Added:",vid.title)
         vid.save()
 
-
+def sort_filter_videos(filter='',sort_by=''):
+    if sort_by == '' and filter == '':
+        return Video.objects.all()
+    elif sort_by == '' and filter != '':
+        return Video.objects.order_by(sort_by)
+    elif sort_by != '' and filter == '':
+        return Video.objects.filter(filter)
+    else:
+        return Video.objects.filter(filter).order_by(sort_by)
+    
 
 # def drop_table(self):
 #     cursor = connection.cursor()
