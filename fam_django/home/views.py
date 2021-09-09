@@ -22,7 +22,7 @@ def home(request):
         
         
         context = {
-        'videos': sort_filter_videos(),
+        'videos': sort_filter_videos(sort_by='publishTime'),
         'searched': user_search_data,
         }
         
