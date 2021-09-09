@@ -18,6 +18,7 @@ pytz        2021.1
 setuptools  57.4.0
 sqlparse    0.4.1
 wheel       0.37.0
+...
 ```
 **Setup**
 1. Clone/pull/download this repository
