@@ -23,9 +23,28 @@ wheel       0.37.0
 
 
 
+
 **Setup**
 
+# Clone/pull/download this repository
 
+# Change into project directory
+cd <project_name>
+
+# Make virtual environment
+mkvirtualenv <project_name>
+
+# Activate virtual environment
+workon <project_name>
+
+# Install requirements
+pip install -r requirements.txt
+
+# Setup (if necessary)
+fab loc setup
+
+# Start the development server
+python manage.py runserver
 
 
 
