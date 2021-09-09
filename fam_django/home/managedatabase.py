@@ -2,14 +2,24 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-import models
+from .models import Video
 
 
-# def delete_everything(self,table):
-#     table.objects.all().delete()
+def delete_videos_database():
+    Video.objects.all().delete()
 
-# # def drop_table(self):
-# #     cursor = connection.cursor()
-# #     table_name = self.model._meta.db_table
-# #     sql = "DROP TABLE %s;" % (table_name, )
-# #     cursor.execute(sql)
+def add_to_database(res):
+    for v in res:
+        snippet = v['snippet']
+        formated_date = snippet['publishedAt']
+        vid = Video(title= snippet['title'], description= snippet['description'], publishTime= formated_date, thumbnail_url= snippet['thumbnails']['medium']['url'], url= v['id']['videoId'], channelTitle=snippet['channelTitle'])
+        print("Added:",vid.title)
+        vid.save()
+
+
+
+# def drop_table(self):
+#     cursor = connection.cursor()
+#     table_name = self.model._meta.db_table
+#     sql = "DROP TABLE %s;" % (table_name, )
+#     cursor.execute(sql)
