@@ -18,13 +18,17 @@ Returns search results that match the query parameters.
 By default, result set identifies matching video, channel, 
 and playlist resources, configure queries to only retrieve a specific type of resource.
 '''
-def getListVideos(keyword:str):
+def getListVideos(keyword:str, page_token=''):
     # Call the API
+   
     req = yt_service.search().list(
         part = 'snippet',
         maxResults = '25',
-        q = keyword
+        q = keyword,
+        type = 'video',
+        pageToken = page_token
     )
+        
     try:
        res = req.execute()
        
