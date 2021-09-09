@@ -13,8 +13,6 @@ https://github.com/googleapis/google-api-python-client/blob/main/docs/start.md
 '''
 yt_service = build('youtube', 'v3', developerKey=API_KEY)
 
-
-
 '''
 Returns search results that match the query parameters.
 By default, result set identifies matching video, channel, 
@@ -29,6 +27,7 @@ def getListVideos(keyword:str):
     )
     try:
        res = req.execute()
+       
     except HttpError as e:
         print('Error response status code : {0}, reason : {1}'.format(e.status_code, e.error_details))
     return res

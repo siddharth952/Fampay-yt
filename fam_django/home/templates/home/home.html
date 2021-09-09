@@ -12,6 +12,15 @@
     {% csrf_token %}
     <input type="text" class="form-control mx-2" required="" name="searched" value="{{ instance.name }}" id="uss">
     <button type="submit" name="user_field" value="user_search" form="systemForm" class="btn btn-warning" >Search</button>
+    <div class="btn-group mx-2">
+      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort By
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Relevance</a>
+        <a class="dropdown-item" href="#">Upload Date</a>
+      </div>
+    </div>
   </form>
   
 
