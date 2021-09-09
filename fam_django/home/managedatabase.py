@@ -3,7 +3,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from .models import Video
-
+import asyncio
+from .yt_session import getListVideos
 
 def delete_videos_database():
     Video.objects.all().delete()
@@ -26,7 +27,19 @@ def sort_filter_videos(filter='',sort_by=''):
     else:
         return Video.objects.filter(filter).order_by(sort_by)
     
+    
+def start_background_loop(loop: asyncio.AbstractEventLoop) -> None:
+    asyncio.set_event_loop(loop)
+    loop.run_forever()
 
+async def refresh_loop(keyword):
+    while(True):
+        print("Refreshed!")
+        data = getListVideos(keyword)
+        add_to_database(data)
+        # Refresh the database every 5 mins
+        await asyncio.sleep(300)
+        
 # def drop_table(self):
 #     cursor = connection.cursor()
 #     table_name = self.model._meta.db_table

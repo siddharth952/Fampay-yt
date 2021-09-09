@@ -1,7 +1,8 @@
 import asyncio
+from threading import Thread
 from django.core import paginator
 from django.shortcuts import render
-from .yt_session import getChannelStatus, getListVideos
+from .yt_session import getListVideos
 from .models import Video
 from .managedatabase import *
 from django.core.paginator import Paginator  
@@ -31,7 +32,7 @@ def home(request):
         
         
         # Database Paginator
-        paginator_ = Paginator(sort_filter_videos(sort_by=sortby), 8)
+        paginator_ = Paginator(sort_filter_videos(sort_by=sortby), 12)
         page = request.GET.get('page')
         video_build_list = paginator_.get_page(page)
         
@@ -42,8 +43,12 @@ def home(request):
         #     prev_page_token = data['prevPageToken']
         #     data = getListVideos(user_search_data, page_token=next_page_token)
         
+        # Refresh the database every 5 mins
+        loop = asyncio.new_event_loop()
+        t = Thread(target=start_background_loop, args=(loop,), daemon=True)
+        t.start()
         
-        
+        task = asyncio.run_coroutine_threadsafe(refresh_loop(user_search_data), loop)
         
         context = {
         'videos': video_build_list,
