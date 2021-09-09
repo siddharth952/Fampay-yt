@@ -7,7 +7,8 @@ API to fetch the latest videos sorted in reverse chronological order of their pu
 ![Fam-yt (1)](https://user-images.githubusercontent.com/40488679/132178804-934d5074-b8e8-4e50-9ff3-a25f5b3bf3a3.png)
 
 **App Image**
-![image](https://user-images.githubusercontent.com/40488679/132666363-6376918c-1663-4bde-9988-ca86f18d80e5.png)
+![132666363-6376918c-1663-4bde-9988-ca86f18d80e5](https://user-images.githubusercontent.com/40488679/132667899-66a53168-4797-409c-aefe-ae794b362914.png)
+
 
 **Requirements**
 ```
