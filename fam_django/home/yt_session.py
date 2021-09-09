@@ -23,7 +23,7 @@ def getListVideos(keyword:str, page_token=''):
    
     req = yt_service.search().list(
         part = 'snippet',
-        maxResults = '25',
+        maxResults = '400',
         q = keyword,
         type = 'video',
         pageToken = page_token

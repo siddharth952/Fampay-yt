@@ -17,8 +17,8 @@
         Sort By
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Relevance</a>
-        <a class="dropdown-item" href="#">Upload Date</a>
+        <a class="dropdown-item" href="?sortby=">Relevance</a>
+        <a class="dropdown-item" href="?sortby=publishTime">Upload Date</a>
       </div>
     </div>
   </form>
@@ -27,7 +27,6 @@
   
 {% if searched %}
   <div class="d-flex flex-column">
-
   <!--Videos-->
   {% for video in videos %}
     
@@ -62,11 +61,20 @@
           
     </div>
   </div>
-
-
-  
   {% endfor %}
   </div>
+
+  <nav aria-label="...">
+    <ul class="pagination pagination-sm">
+      <li class="page-item disabled">
+        <a class="page-link" href="?page=1" tabindex="-1">1</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+      <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+    </ul>
+  </nav>
+
+
 
 
 {% endif %}
