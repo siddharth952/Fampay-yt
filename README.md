@@ -2,51 +2,42 @@
 
 API to fetch the latest videos sorted in reverse chronological order of their publishing date-time from YouTube for a given tag/search query in a paginated response.
 
-**Build Status**
-
-
 **Requirements**
-
+```
 asgiref     3.4.1
 Django      3.2.7
 pip         21.2.4
 pytz        2021.1
 setuptools  57.4.0
 sqlparse    0.4.1
-wheel       0.37.0
-
+wheel       0.37.0```
 
 **Use Case Diagram (UML)**
 ![Fam-yt (1)](https://user-images.githubusercontent.com/40488679/132178804-934d5074-b8e8-4e50-9ff3-a25f5b3bf3a3.png)
 
 
 
-
-
-
 **Setup**
 
-# Clone/pull/download this repository
+1. Clone/pull/download this repository
 
-# Change into project directory
+2. Change into project directory
 cd <project_name>
 
-# Make virtual environment
+3. Make virtual environment
 mkvirtualenv <project_name>
 
-# Activate virtual environment
+4. Activate virtual environment
 workon <project_name>
 
-# Install requirements
+5. Install requirements
 pip install -r requirements.txt
 
-# Setup (if necessary)
+6. Setup (if necessary)
 fab loc setup
 
-# Start the development server
+7. Start the development server
 python manage.py runserver
-
-
 
 
 **Reference**
